@@ -16,13 +16,8 @@ public class TestCases extends BaseTest{
     }
 
     @Test
-    public void addProduct() throws IOException {
+    public void addCoat() throws IOException {
         page.GetInstance(LoginPage.class).loginUser();
-        page.GetInstance(HomePage.class).addProduct("adidas original");
-    }
-    @Test
-    public void addProduct1() throws IOException {
-        page.GetInstance(LoginPage.class).loginUser();
-        page.GetInstance(HomePage.class).addProduct("adidas original");
+        page.GetInstance(HomePage.class).addZaraCoat();
     }
 }
