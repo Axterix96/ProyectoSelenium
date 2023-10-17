@@ -16,7 +16,7 @@ public class HomePage extends BasePage{
         super(driver, wait);
     }
 
-    By productsCards = By.cssSelector(".mb-3");
+    By productsCards = By.xpath("//div[@class='card-body']");
 
     By toastContainer = By.cssSelector("#toast-container");
 
@@ -24,21 +24,31 @@ public class HomePage extends BasePage{
 
     By cartBtn = By.cssSelector("[routerlink*='cart']");
 
-    public void addZaraCoat()
+
+    public void addProduct(String productName)
     {
         wait.until(ExpectedConditions.visibilityOfElementLocated(productsCards));
-        List<WebElement> products = driver.findElements(productsCards);
-        WebElement prod = products.stream().filter(product->
-                product.findElement(By.cssSelector("h5 b")).getText().equals("adidas original")).findFirst().orElse(null);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".card-body button:last-of-type")));
-        prod.findElement(By.cssSelector(".card-body button:last-of-type")).click();
-wait.until(ExpectedConditions.visibilityOfElementLocated(toastContainer));
+
+        driver.findElement(By.xpath("//b[contains(text(),'"+productName+"')]/../..//button[contains(text(),' Add To Cart')]")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(toastContainer));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingIcon));
     }
 
     public void goToCheckout()
     {
         driver.findElement(cartBtn).click();
+    }
+
+    public void addProduct1(String productName)
+    {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(productsCards));
+        List<WebElement> products = driver.findElements(productsCards);
+        WebElement prod = products.stream().filter(product->
+                product.findElement(By.xpath("//div[@class='card-body']//b")).getText().equals(productName)).findFirst().orElse(null);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".card-body button:last-of-type")));
+        prod.findElement(By.xpath("//b[contains(text(),'"+productName+"')]/../..//button[contains(text(),' Add To Cart')]")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(toastContainer));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingIcon));
     }
 
 }
