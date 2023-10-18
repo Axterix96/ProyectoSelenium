@@ -1,0 +1,180 @@
+{
+  "clientsInfo": [
+  {
+    "firstname": "Nicolas",
+    "lastname" : "Sogbi",
+    "email" : "iicolaswsaszogbi@gmail.com",
+    "phoneNumber" : "9999019879",
+    "occupation" : "Doctor",
+    "gender" : "Male",
+    "password": "Password1",
+    "confirmPassword" : "Password1",
+    "older" : "Yes"
+  },
+    {
+      "firstname": "Nicolas",
+      "lastname" : "Sogbi",
+      "email" : "nicolaszogbi@gmail.com",
+      "phoneNumber" : "9999019879",
+      "occupation" : "Student",
+      "gender" : "Male",
+      "password": "Password1",
+      "confirmPassword" : "Password1",
+      "older" : "Yes"
+    },
+    {
+      "firstname": "Nicolas",
+      "lastname" : "Sogbi",
+      "email" : "nicolaszogbi@gmail.com",
+      "phoneNumber" : "9999019879",
+      "occupation" : "Engineer",
+      "gender" : "Male",
+      "password": "Password1",
+      "confirmPassword" : "Password1",
+      "older" : "Yes"
+    },
+    {
+      "firstname": "Nicolas",
+      "lastname" : "Sogbi",
+      "email" : "nicolaszogbi@gmail.com",
+      "phoneNumber" : "9999019879",
+      "occupation" : "Scientist",
+      "gender" : "Male",
+      "password": "Password1",
+      "confirmPassword" : "Password1",
+      "older" : "Yes"
+    },
+    {
+      "firstname": "Nicolas",
+      "lastname" : "Sogbi",
+      "email" : "nicolaszogbi@gmail.com",
+      "phoneNumber" : "9999019879",
+      "occupation" : "Doctor",
+      "gender" : "Male",
+      "password": "Password1",
+      "confirmPassword" : "Password1",
+      "older" : "No"
+    },
+    {
+      "firstname": "Nicolas",
+      "lastname" : "Sogbi",
+      "email" : "nicolaszogbi@gmail.com",
+      "phoneNumber" : "9999019879",
+      "occupation" : "Student",
+      "gender" : "Male",
+      "password": "Password1",
+      "confirmPassword" : "Password1",
+      "older" : "No"
+    },
+    {
+      "firstname": "Nicolas",
+      "lastname" : "Sogbi",
+      "email" : "nicolaszogbi@gmail.com",
+      "phoneNumber" : "9999019879",
+      "occupation" : "Engineer",
+      "gender" : "Male",
+      "password": "Password1",
+      "confirmPassword" : "Password1",
+      "older" : "No"
+    },
+    {
+      "firstname": "Nicolas",
+      "lastname" : "Sogbi",
+      "email" : "nicolaszogbi@gmail.com",
+      "phoneNumber" : "9999019879",
+      "occupation" : "Scientist",
+      "gender" : "Male",
+      "password": "Password1",
+      "confirmPassword" : "Password1",
+      "older" : "No"
+    },
+    {
+      "firstname": "Nicolas",
+      "lastname" : "Sogbi",
+      "email" : "nicolaszogbi@gmail.com",
+      "phoneNumber" : "9999019879",
+      "occupation" : "Doctor",
+      "gender" : "Female",
+      "password": "Password1",
+      "confirmPassword" : "Password1",
+      "older" : "Yes"
+    },
+    {
+      "firstname": "Nicolas",
+      "lastname" : "Sogbi",
+      "email" : "nicolaszogbi@gmail.com",
+      "phoneNumber" : "9999019879",
+      "occupation" : "Student",
+      "gender" : "Female",
+      "password": "Password1",
+      "confirmPassword" : "Password1",
+      "older" : "Yes"
+    },
+    {
+      "firstname": "Nicolas",
+      "lastname" : "Sogbi",
+      "email" : "nicolaszogbi@gmail.com",
+      "phoneNumber" : "9999019879",
+      "occupation" : "Engineer",
+      "gender" : "Female",
+      "password": "Password1",
+      "confirmPassword" : "Password1",
+      "older" : "Yes"
+    },
+    {
+      "firstname": "Nicolas",
+      "lastname" : "Sogbi",
+      "email" : "nicolaszogbi@gmail.com",
+      "phoneNumber" : "9999019879",
+      "occupation" : "Scientist",
+      "gender" : "Female",
+      "password": "Password1",
+      "confirmPassword" : "Password1",
+      "older" : "Yes"
+    },
+    {
+      "firstname": "Nicolas",
+      "lastname" : "Sogbi",
+      "email" : "nicolaszogbi@gmail.com",
+      "phoneNumber" : "9999019879",
+      "occupation" : "Doctor",
+      "gender" : "Female",
+      "password": "Password1",
+      "confirmPassword" : "Password1",
+      "older" : "No"
+    },
+    {
+      "firstname": "Nicolas",
+      "lastname" : "Sogbi",
+      "email" : "nicolaszogbi@gmail.com",
+      "phoneNumber" : "9999019879",
+      "occupation" : "Student",
+      "gender" : "Female",
+      "password": "Password1",
+      "confirmPassword" : "Password1",
+      "older" : "No"
+    },
+    {
+      "firstname": "Nicolas",
+      "lastname" : "Sogbi",
+      "email" : "nicolaszogbi@gmail.com",
+      "phoneNumber" : "9999019879",
+      "occupation" : "Engineer",
+      "gender" : "Female",
+      "password": "Password1",
+      "confirmPassword" : "Password1",
+      "older" : "No"
+    },
+    {
+      "firstname": "Nicolas",
+      "lastname" : "Sogbi",
+      "email" : "nicolaszogbi@gmail.com",
+      "phoneNumber" : "9999019879",
+      "occupation" : "Scientist",
+      "gender" : "Female",
+      "password": "Password1",
+      "confirmPassword" : "Password1",
+      "older" : "No"
+    }
+  ]
+}
