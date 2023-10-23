@@ -6,14 +6,15 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.Test;
-import org.junit.runners.Parameterized;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestCase extends BaseTest {
-
+    String productName = "adidas original";
+    String country = "Mexico";
 
     @Test
 
@@ -24,18 +25,49 @@ public class TestCase extends BaseTest {
     @Test
     public void addProduct() throws IOException {
         page.GetInstance(LoginPage.class).loginUser();
-        page.GetInstance(HomePage.class).addProduct("adidas original");
+        page.GetInstance(HomePage.class).addProduct(productName);
     }
 
     @Test
-    public void goToPay() throws IOException {
+    public void testCase2goToPayWithoutRegion() throws IOException, InterruptedException {
         page.GetInstance(LoginPage.class).loginUser();
-        page.GetInstance(HomePage.class).addProduct("adidas original");
+        page.GetInstance(HomePage.class).addProduct(productName);
         page.GetInstance(HomePage.class).goToCheckout();
         page.GetInstance(CartPage.class).goToPaymentPage();
-        page.GetInstance(PaymentPage.class).pay();
+        page.GetInstance(PaymentPage.class).placeOrderWithoutRegion();
     }
 
+    @Test
+    public void testCase3goToPayWithRegion() throws IOException {
+        page.GetInstance(LoginPage.class).loginUser();
+        page.GetInstance(HomePage.class).addProduct(productName);
+        page.GetInstance(HomePage.class).goToCheckout();
+        page.GetInstance(CartPage.class).goToPaymentPage();
+        page.GetInstance(PaymentPage.class).placeOrderWithRegion(country);
+    }
+
+    @Test
+    public void testCase4validateFileExist() throws IOException {
+        page.GetInstance(LoginPage.class).loginUser();
+        page.GetInstance(HomePage.class).addProduct(productName);
+        page.GetInstance(HomePage.class).goToCheckout();
+        page.GetInstance(CartPage.class).goToPaymentPage();
+        page.GetInstance(PaymentPage.class).placeOrderWithRegion(country);
+        page.GetInstance(OrderPage.class).downloadCsv();
+        page.GetInstance(OrderPage.class).validateFileExist();
+    }
+
+    @Test
+    public void userStory() throws IOException, InterruptedException {
+
+
+        page.GetInstance(LoginPage.class).loginUser();
+        page.GetInstance(HomePage.class).addProduct(productName);
+        page.GetInstance(HomePage.class).goToCheckout();
+        page.GetInstance(CartPage.class).goToPaymentPage();
+        page.GetInstance(PaymentPage.class).placeOrderWithRegion(country);
+        page.GetInstance(OrderPage.class).validateOrder(productName);
+    }
 
  @Test
     public void registerUser() throws IOException, ParseException {
