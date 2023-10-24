@@ -3,6 +3,7 @@ package POM;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -26,14 +27,24 @@ public class OrderPage extends BasePage{
         super(driver, wait);
     }
 
-    public void downloadCsv()
-    {
+    public void downloadCsv() throws InterruptedException {
         driver.findElement(csvBtn).click();
+        Thread.sleep(5000);
+
     }
 
-    public Boolean validateFileExist() {
-        File f = new File("IdeaProjects\\ProyectoSelenium\\order-invoice_xnicolaz96.csv");
-        return f.exists();
+    public ExpectedCondition<Boolean> validateFileExist() {
+        return new ExpectedCondition<Boolean>() {
+            @Override
+            public Boolean apply(WebDriver driver) {
+                File f = new File("IdeaProjects\\ProyectoSelenium\\order-invoice_xnicolaz96.csv");
+                return f.exists();
+            }
+            @Override
+            public String toString() {
+                return String.format("file to be present within the time specified");
+            }
+        };
     }
     public void validateOrder(String productName) throws InterruptedException {
         Thread.sleep(5000);
