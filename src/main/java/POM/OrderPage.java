@@ -3,6 +3,7 @@ package POM;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -31,7 +32,7 @@ public class OrderPage extends BasePage{
     }
 
     public Boolean validateFileExist() {
-        File f = new File("C:\\Users\\axter\\Downloads\\order-invoice_xnicolaz96.csv");
+        File f = new File("IdeaProjects\\ProyectoSelenium\\order-invoice_xnicolaz96.csv");
         return f.exists();
     }
     public void validateOrder(String productName) throws InterruptedException {
