@@ -45,7 +45,7 @@ public class TestCase extends BaseTest {
     }
 
     @Test
-    public void testCase4validateFileExist() throws IOException {
+    public void testCase4validateFileExist() throws IOException, InterruptedException {
         page.GetInstance(LoginPage.class).loginUser();
         page.GetInstance(HomePage.class).addProduct(productName);
         page.GetInstance(HomePage.class).goToCheckout();
