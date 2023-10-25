@@ -23,29 +23,31 @@ public class OrderPage extends BasePage{
     By tableOrders = By.xpath("//table//tr");
 
     By tableTh = By.xpath("//table//tr//th");
+
+    By labelOrder = By.xpath("//td[@class='lead secondary mt-4']");
+
+    By toastOrder = By.xpath("//div[@id='toast-container']");
     public OrderPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
 
     public void downloadCsv() throws InterruptedException {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(labelOrder));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(toastOrder));
+        wait.until(ExpectedConditions.elementToBeClickable(csvBtn));
         driver.findElement(csvBtn).click();
-        Thread.sleep(5000);
+        Thread.sleep(10000);
 
     }
+//C:\Users\nicolas.sogbi\Downloads
+            public void validateFileExist() {
+                File f = new File("C:\\Users\\nicolas.sogbi\\Downloads\\order-invoice_xnicolaz96.csv");
+                Boolean fileExist = f.exists();
+                System.out.println(fileExist);
+                Assert.assertTrue(f.exists());
+            }
 
-    public ExpectedCondition<Boolean> validateFileExist() {
-        return new ExpectedCondition<Boolean>() {
-            @Override
-            public Boolean apply(WebDriver driver) {
-                File f = new File("IdeaProjects\\ProyectoSelenium\\order-invoice_xnicolaz96.csv");
-                return f.exists();
-            }
-            @Override
-            public String toString() {
-                return String.format("file to be present within the time specified");
-            }
-        };
-    }
+
     public void validateOrder(String productName) throws InterruptedException {
         Thread.sleep(5000);
         String productSString = driver.findElement(productId).getText().replace("| ","");

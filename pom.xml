@@ -11,6 +11,8 @@
   <url>http://maven.apache.org</url>
 
   <properties>
+    <maven.compiler.source>20</maven.compiler.source>
+    <maven.compiler.target>20</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -39,8 +41,7 @@
     </dependency>
 
 
-    <!-- https://mvnrepository.com/artifact/org.json/json -->
-    <!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+
     <dependency>
       <groupId>com.googlecode.json-simple</groupId>
       <artifactId>json-simple</artifactId>

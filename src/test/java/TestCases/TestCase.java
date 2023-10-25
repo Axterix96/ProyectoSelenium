@@ -57,13 +57,12 @@ public class TestCase extends BaseTest {
 
     @Test
     public void userStory() throws IOException, InterruptedException {
-
-
         page.GetInstance(LoginPage.class).loginUser();
         page.GetInstance(HomePage.class).addProduct(productName);
         page.GetInstance(HomePage.class).goToCheckout();
         page.GetInstance(CartPage.class).goToPaymentPage();
         page.GetInstance(PaymentPage.class).placeOrderWithRegion(country);
+        page.GetInstance(OrderPage.class).downloadCsv();
         page.GetInstance(OrderPage.class).validateOrder(productName);
     }
 
