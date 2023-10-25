@@ -38,6 +38,7 @@ public class PaymentPage extends  BasePage{
 
     By searchRegion = By.cssSelector("button.ta-item:nth-child(2)");
 
+    By spinner = By.xpath("//div[@class='ngx-spinner-overlay ng-tns-c31-3 ng-trigger ng-trigger-fadeIn ng-star-inserted']");
 
     public void placeOrderWithoutRegion() throws InterruptedException {
         Select expireDateFirstSelect = new Select(driver.findElement(expireDateFirst));
@@ -53,7 +54,7 @@ public class PaymentPage extends  BasePage{
         wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingIcon));
         wait.until(ExpectedConditions.elementToBeClickable(placeOrderBtn));
 
-
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(spinner));
        driver.findElement(placeOrderBtn).click();
         wait.until(ExpectedConditions.elementToBeClickable(toastContainer));
 
