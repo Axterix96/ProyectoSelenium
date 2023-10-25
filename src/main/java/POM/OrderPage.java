@@ -3,7 +3,6 @@ package POM;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -42,8 +41,6 @@ public class OrderPage extends BasePage{
 //C:\Users\nicolas.sogbi\Downloads
             public void validateFileExist() {
                 File f = new File("C:\\Users\\nicolas.sogbi\\Downloads\\order-invoice_xnicolaz96.csv");
-                Boolean fileExist = f.exists();
-                System.out.println(fileExist);
                 Assert.assertTrue(f.exists());
             }
 
