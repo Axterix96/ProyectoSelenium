@@ -22,6 +22,8 @@ public class HomePage extends BasePage{
 
     By cartBtn = By.xpath("//button[@routerlink='/dashboard/cart']");
 
+    By spinner = By.xpath("//div[@class='ngx-spinner-overlay ng-tns-c31-1 ng-trigger ng-trigger-fadeIn ng-star-inserted']");
+
     public void addProduct(String productName)
     {
         wait.until(ExpectedConditions.visibilityOfElementLocated(productsCards));
@@ -39,6 +41,7 @@ public class HomePage extends BasePage{
        }
         wait.until(ExpectedConditions.visibilityOfElementLocated(toastContainer));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingIcon));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(spinner));
         driver.findElement(cartBtn).click();
 
 

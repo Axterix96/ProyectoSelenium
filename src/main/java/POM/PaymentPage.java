@@ -80,7 +80,9 @@ public class PaymentPage extends  BasePage{
         driver.findElement(applyCouponBtn).click();
         wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingIcon));
         driver.findElement(regionInput).sendKeys(region);
+        wait.until(ExpectedConditions.presenceOfElementLocated(regionInput));
         driver.findElement(searchRegion).click();
+
 
         driver.findElement(placeOrderBtn).click();
         wait.until(ExpectedConditions.elementToBeClickable(toastContainer));
