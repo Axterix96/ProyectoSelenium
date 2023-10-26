@@ -78,9 +78,10 @@ public class PaymentPage extends  BasePage{
         driver.findElement(nameOnCardInput).sendKeys("Nicolas Sogbi Rodriguez");
         driver.findElement(applyCouponInput).sendKeys("coupon");
         driver.findElement(applyCouponBtn).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(loadingIcon));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingIcon));
         driver.findElement(regionInput).sendKeys(region);
-        wait.until(ExpectedConditions.presenceOfElementLocated(regionInput));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(searchRegion));
         driver.findElement(searchRegion).click();
 
 
