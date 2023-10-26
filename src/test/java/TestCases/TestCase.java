@@ -1,6 +1,7 @@
 package TestCases;
 
 import POM.*;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -25,9 +26,47 @@ public class TestCase extends BaseTest {
         page.GetInstance(LoginPage.class).loginUser();
         page.GetInstance(HomePage.class).addProduct(productName);
     }
-
     @Test
-    public void testCase2goToPayWithoutRegion() throws IOException, InterruptedException {
+    public void testCase2RegisterUser() throws IOException, ParseException {
+        JSONParser jsonParser = new JSONParser();
+        FileReader reader = new FileReader("src\\test\\java\\TestCases\\data.json");
+        Object obj = jsonParser.parse(reader);
+
+        JSONObject userRegisterJsonObject =(JSONObject) obj;
+        JSONArray userRegisterArray = (JSONArray) userRegisterJsonObject.get("clientsInfo");
+
+        page.GetInstance(LoginPage.class).goToRegisterMenu();
+
+        String arrayJson[] = new String[userRegisterArray.size()];
+        for(int i = 0; i < userRegisterArray.size();i++)
+        {
+            page.GetInstance(LoginPage.class).goToRegisterMenu();
+            JSONObject users = (JSONObject)userRegisterArray.get(i);
+            String firstname =(String) users.get("firstname");
+
+            String lastname =(String) users.get("lastname");
+            int random = (int) Math.random();
+            String stringRandom = String.valueOf(random);
+            String email =(String) users.get("email");
+            String [] emailParts = email.split("@");
+            String finalEmail = RandomStringUtils.randomAlphabetic(10) + stringRandom +"@"+ emailParts[1];
+            String phoneNumber =(String) users.get("phoneNumber");
+            String occupation =(String) users.get("occupation");
+            String gender =(String) users.get("phoneNumber");
+            String password =(String) users.get("password");
+            String confirmPassword =(String) users.get("confirmPassword");
+            String older =(String) users.get("older");
+
+            page.GetInstance(RegisterPage.class).registerUser(firstname,lastname,finalEmail,phoneNumber,occupation,gender,password,confirmPassword,
+                    older);
+
+            page.GetInstance(RegisterPage.class).goToRegisterPage();
+
+
+        }
+    }
+    @Test
+    public void testCase3GoToPayWithoutRegion() throws IOException, InterruptedException {
         page.GetInstance(LoginPage.class).loginUser();
         page.GetInstance(HomePage.class).addProduct(productName);
         page.GetInstance(HomePage.class).goToCheckout();
@@ -36,7 +75,7 @@ public class TestCase extends BaseTest {
     }
 
     @Test
-    public void testCase3goToPayWithRegion() throws IOException {
+    public void testCase3GoToPayWithRegion() throws IOException {
         page.GetInstance(LoginPage.class).loginUser();
         page.GetInstance(HomePage.class).addProduct(productName);
         page.GetInstance(HomePage.class).goToCheckout();
@@ -66,43 +105,5 @@ public class TestCase extends BaseTest {
         page.GetInstance(OrderPage.class).validateOrder(productName);
     }
 
- @Test
-    public void registerUser() throws IOException, ParseException {
-        JSONParser jsonParser = new JSONParser();
-        FileReader reader = new FileReader("src\\test\\java\\TestCases\\data.json");
-        Object obj = jsonParser.parse(reader);
 
-        JSONObject userRegisterJsonObject =(JSONObject) obj;
-        JSONArray userRegisterArray = (JSONArray) userRegisterJsonObject.get("clientsInfo");
-
-        page.GetInstance(LoginPage.class).goToRegisterMenu();
-
-        String arrayJson[] = new String[userRegisterArray.size()];
-        for(int i = 0; i < userRegisterArray.size();i++)
-        {
-            page.GetInstance(LoginPage.class).goToRegisterMenu();
-            JSONObject users = (JSONObject)userRegisterArray.get(i);
-            String firstname =(String) users.get("firstname");
-
-            String lastname =(String) users.get("lastname");
-            int random = (int) Math.random();
-            String stringRandom = String.valueOf(random);
-            String email =(String) users.get("email");
-            String [] emailParts = email.split("@");
-            String finalEmail = emailParts[0] + stringRandom +"@"+ emailParts[1];
-            String phoneNumber =(String) users.get("phoneNumber");
-            String occupation =(String) users.get("occupation");
-            String gender =(String) users.get("phoneNumber");
-            String password =(String) users.get("password");
-            String confirmPassword =(String) users.get("confirmPassword");
-            String older =(String) users.get("older");
-
-            page.GetInstance(RegisterPage.class).registerUser(firstname,lastname,finalEmail,phoneNumber,occupation,gender,password,confirmPassword,
-                    older);
-
-            page.GetInstance(RegisterPage.class).goToRegisterPage();
-
-
-        }
-    }
 }
