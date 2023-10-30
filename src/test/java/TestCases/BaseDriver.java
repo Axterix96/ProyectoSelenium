@@ -1,6 +1,7 @@
 package TestCases;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.lang3.SystemProperties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -25,6 +26,7 @@ public class BaseDriver {
 
         FileInputStream fis = new FileInputStream("src\\test\\java\\TestCases\\GlobalData.properties");
         prop.load(fis);
+
 
         String browserName = prop.getProperty("browser");
 

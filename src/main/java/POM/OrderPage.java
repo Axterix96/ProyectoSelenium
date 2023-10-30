@@ -50,10 +50,8 @@ public class OrderPage extends BasePage{
         String productSString = driver.findElement(productId).getText().replace("| ","");
         String productStringFinal = productSString.replace(" |","");
 
-        System.out.println(productStringFinal);
         if(driver.findElement(this.productName).getText().equals(productName))
         {
-            System.out.println("Entre al primer if");
 
             driver.findElement(orderBtn).click();
 
@@ -62,8 +60,7 @@ public class OrderPage extends BasePage{
 
                 if(driver.findElements(tableTh).get(i).getText().equals(productStringFinal))
                 {
-                    Assert.assertEquals(driver.findElements(tableTh).get(i).getText(),productStringFinal);
-                    System.out.println(productStringFinal + " XD");
+                    Assert.assertEquals("Si paso la prueba",driver.findElements(tableTh).get(i).getText(),productStringFinal);
                 }
             }
         }

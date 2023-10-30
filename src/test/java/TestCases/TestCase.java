@@ -14,6 +14,11 @@ import java.io.IOException;
 public class TestCase extends BaseTest {
     String productName = "adidas original";
     String country = "Mexico";
+    String expireDateFirst = "07";
+    String expireDateLast = "27";
+    String cvv = "123";
+    String name = "Nicolas Jose Sogbi Rodriguez";
+    String coupon = "coupon";
 
     @Test
 
@@ -36,8 +41,7 @@ public class TestCase extends BaseTest {
         JSONArray userRegisterArray = (JSONArray) userRegisterJsonObject.get("clientsInfo");
 
         page.GetInstance(LoginPage.class).goToRegisterMenu();
-
-        String arrayJson[] = new String[userRegisterArray.size()];
+        // no tener lineas de codigo muertas, es necesario tener calidad en tu propio codigo y para ser mas limpio y ordernado
         for(int i = 0; i < userRegisterArray.size();i++)
         {
             page.GetInstance(LoginPage.class).goToRegisterMenu();
@@ -71,7 +75,7 @@ public class TestCase extends BaseTest {
         page.GetInstance(HomePage.class).addProduct(productName);
         page.GetInstance(HomePage.class).goToCheckout();
         page.GetInstance(CartPage.class).goToPaymentPage();
-        page.GetInstance(PaymentPage.class).placeOrderWithoutRegion();
+        page.GetInstance(PaymentPage.class).placeOrderWithoutRegion(expireDateFirst, expireDateLast, cvv, name,coupon);
     }
 
     @Test
@@ -80,7 +84,7 @@ public class TestCase extends BaseTest {
         page.GetInstance(HomePage.class).addProduct(productName);
         page.GetInstance(HomePage.class).goToCheckout();
         page.GetInstance(CartPage.class).goToPaymentPage();
-        page.GetInstance(PaymentPage.class).placeOrderWithRegion(country);
+        page.GetInstance(PaymentPage.class).placeOrderWithRegion(country,expireDateFirst, expireDateLast, cvv, name,coupon);
     }
 
     @Test
@@ -89,7 +93,7 @@ public class TestCase extends BaseTest {
         page.GetInstance(HomePage.class).addProduct(productName);
         page.GetInstance(HomePage.class).goToCheckout();
         page.GetInstance(CartPage.class).goToPaymentPage();
-        page.GetInstance(PaymentPage.class).placeOrderWithRegion(country);
+        page.GetInstance(PaymentPage.class).placeOrderWithRegion(country,expireDateFirst, expireDateLast, cvv, name,coupon);
         page.GetInstance(OrderPage.class).downloadCsv();
         page.GetInstance(OrderPage.class).validateFileExist();
     }
@@ -100,7 +104,7 @@ public class TestCase extends BaseTest {
         page.GetInstance(HomePage.class).addProduct(productName);
         page.GetInstance(HomePage.class).goToCheckout();
         page.GetInstance(CartPage.class).goToPaymentPage();
-        page.GetInstance(PaymentPage.class).placeOrderWithRegion(country);
+        page.GetInstance(PaymentPage.class).placeOrderWithRegion(country,expireDateFirst, expireDateLast, cvv, name,coupon);
         page.GetInstance(OrderPage.class).downloadCsv();
         page.GetInstance(OrderPage.class).validateOrder(productName);
     }

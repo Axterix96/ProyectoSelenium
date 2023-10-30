@@ -40,25 +40,26 @@ public class PaymentPage extends  BasePage{
 
     By spinner = By.xpath("//div[@class='ngx-spinner-overlay ng-tns-c31-3 ng-trigger ng-trigger-fadeIn ng-star-inserted']");
 
-    public void placeOrderWithoutRegion() throws InterruptedException {
-        Select expireDateFirstSelect = new Select(driver.findElement(expireDateFirst));
-        expireDateFirstSelect.selectByVisibleText("07");
+    public void placeOrderWithoutRegion(String expireDateFirst, String expireDateLast, String cvv, String name, String coupon) throws InterruptedException {
+        Select expireDateFirstSelect = new Select(driver.findElement(this.expireDateFirst));
+        expireDateFirstSelect.selectByVisibleText(expireDateFirst);
 
-        Select expireDateLastSelect = new Select(driver.findElement(expireDateLast));
-        expireDateLastSelect.selectByVisibleText("27");
+        Select expireDateLastSelect = new Select(driver.findElement(this.expireDateLast));
+        expireDateLastSelect.selectByVisibleText(expireDateLast);
 
-        driver.findElement(cvvInput).sendKeys("123");
-        driver.findElement(nameOnCardInput).sendKeys("Nicolas Sogbi Rodriguez");
-        driver.findElement(applyCouponInput).sendKeys("coupon");
+        driver.findElement(cvvInput).sendKeys(cvv);
+        driver.findElement(nameOnCardInput).sendKeys(name);
+        driver.findElement(applyCouponInput).sendKeys(coupon);
         driver.findElement(applyCouponBtn).click();
         wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingIcon));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(spinner));
         wait.until(ExpectedConditions.elementToBeClickable(placeOrderBtn));
 
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(spinner));
+
        driver.findElement(placeOrderBtn).click();
         wait.until(ExpectedConditions.elementToBeClickable(toastContainer));
 
-            Assert.assertEquals(driver.findElement(toastContainer).getText(),"Please Enter Full Shipping Information");
+            Assert.assertEquals("Si funciono la prueba",driver.findElement(toastContainer).getText(),"Please Enter Full Shipping Information");
 
         System.out.println(driver.findElement(toastContainer).getText());
 
@@ -66,27 +67,30 @@ public class PaymentPage extends  BasePage{
 
     }
 
-    public void placeOrderWithRegion(String region)
+    public void placeOrderWithRegion(String region, String expireDateFirst, String expireDateLast, String cvv, String name, String coupon)
     {
-        Select expireDateFirstSelect = new Select(driver.findElement(expireDateFirst));
-        expireDateFirstSelect.selectByVisibleText("07");
+        Select expireDateFirstSelect = new Select(driver.findElement(this.expireDateFirst));
+        expireDateFirstSelect.selectByVisibleText(expireDateFirst);
 
-        Select expireDateLastSelect = new Select(driver.findElement(expireDateLast));
-        expireDateLastSelect.selectByVisibleText("27");
+        Select expireDateLastSelect = new Select(driver.findElement(this.expireDateLast));
+        expireDateLastSelect.selectByVisibleText(expireDateLast);
 
-        driver.findElement(cvvInput).sendKeys("123");
-        driver.findElement(nameOnCardInput).sendKeys("Nicolas Sogbi Rodriguez");
-        driver.findElement(applyCouponInput).sendKeys("coupon");
+        driver.findElement(cvvInput).sendKeys(cvv);
+        driver.findElement(nameOnCardInput).sendKeys(name);
+        driver.findElement(applyCouponInput).sendKeys(coupon);
         driver.findElement(applyCouponBtn).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(loadingIcon));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingIcon));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(spinner));
         driver.findElement(regionInput).sendKeys(region);
         wait.until(ExpectedConditions.visibilityOfElementLocated(searchRegion));
         driver.findElement(searchRegion).click();
 
 
         driver.findElement(placeOrderBtn).click();
+
         wait.until(ExpectedConditions.elementToBeClickable(toastContainer));
+        Assert.assertEquals("Si funciono la prueba",driver.findElement(toastContainer).getText(),"Order Placed Successfully");
 
 
     }

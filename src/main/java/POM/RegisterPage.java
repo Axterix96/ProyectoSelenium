@@ -74,6 +74,9 @@ public class RegisterPage extends BasePage{
     public void goToRegisterPage()
     {
         wait.until(ExpectedConditions.visibilityOfElementLocated(loginBtn));
+        //toast para validar la creacion de usuario
+        //falto la validacion de la creacion del usuario
+        // se requiere para la realizacion de los reportes y no todos entenderan como funciona el codigo
         driver.findElement(loginBtn).click();
     }
 }
